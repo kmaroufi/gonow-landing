@@ -89,3 +89,7 @@ GA is **commented out** in `<head>`. To activate: uncomment the two script tags 
 
 ### Hosting
 GitHub Pages — root of `main` branch. No build step. Push `index.html` and it's live.
+
+### Pending
+- Add `og-image.png` (1200×630px) to the repo root. Until then, social share cards will show no image but nothing breaks.
+- If a custom domain (`safely.com`) is set up, update the URLs in: canonical link, OG tags, JSON-LD, and `sitemap.xml`.
