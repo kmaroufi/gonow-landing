@@ -88,4 +88,4 @@ GA is **commented out** in `<head>`. To activate: uncomment the two script tags 
 `peetactics_handoff/` contains the original multi-file React/Babel prototype with the tweaks panel and full app screens. It is gitignored and should not be modified. The production `index.html` was derived from `peetactics_handoff/index.html` with React/Babel removed, assets inlined, and the CSS bug fixed.
 
 ### Hosting
-GitHub Pages — root of `master` branch. No build step. Push `index.html` and it's live.
+GitHub Pages — root of `main` branch. No build step. Push `index.html` and it's live.
