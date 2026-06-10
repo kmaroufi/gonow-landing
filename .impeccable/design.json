@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-11T02:54:00+03:30",
+  "title": "Design System: NeverMiss",
+  "extensions": {
+    "colorMeta": {
+      "match-dark": {
+        "role": "neutral",
+        "displayName": "Match Dark",
+        "canonical": "#080808",
+        "tonalRamp": ["#080808", "#111111", "#1c1c1c", "#2a2a2a", "#3d3d3d", "#565656", "#888888", "#c0c0c0"]
+      },
+      "dugout-grey": {
+        "role": "neutral",
+        "displayName": "Dugout Grey",
+        "canonical": "#111111",
+        "tonalRamp": ["#111111", "#1a1a1a", "#242424", "#303030", "#404040", "#585858", "#8a8a8a", "#bdbdbd"]
+      },
+      "goal-green": {
+        "role": "primary",
+        "displayName": "Goal Green",
+        "canonical": "#00e05a",
+        "tonalRamp": ["#003314", "#005220", "#00712c", "#008f38", "#00ad46", "#00cb53", "#00e05a", "#66f5a0"]
+      },
+      "goal-green-dim": {
+        "role": "primary",
+        "displayName": "Goal Green Dim",
+        "canonical": "#00e05a1f",
+        "tonalRamp": ["#00e05a05", "#00e05a0d", "#00e05a1a", "#00e05a26", "#00e05a33", "#00e05a40", "#00e05a66", "#00e05a99"]
+      },
+      "ink-white": {
+        "role": "neutral",
+        "displayName": "Ink White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#ffffff", "#f0f0f0", "#d6d6d6", "#b8b8b8", "#979797", "#717171", "#4a4a4a", "#272727"]
+      },
+      "border-subtle": {
+        "role": "neutral",
+        "displayName": "Border Subtle",
+        "canonical": "#ffffff12",
+        "tonalRamp": ["#ffffff05", "#ffffff0d", "#ffffff12", "#ffffff1a", "#ffffff26", "#ffffff33", "#ffffff66", "#ffffff99"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only. 'Never Miss a Goal.' One instance per page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings. 'Your match companion.'"
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Component labels in Goal Green — pillar titles, live state heading."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Primary prose. Max 65–75ch line length enforced on containers."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Countdown labels, unit text, badge text. Always uppercase. Highest letter-spacing in the system."
+      }
+    },
+    "shadows": [
+      {
+        "name": "goal-glow",
+        "value": "0 0 24px rgba(0,224,90,0.08)",
+        "purpose": "Ambient glow on countdown blocks via ::after pseudo. Signals 'alive', not elevation. Not interactive."
+      },
+      {
+        "name": "hero-ambient",
+        "value": "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(0,224,90,0.07) 0%, transparent 70%)",
+        "purpose": "Background bloom behind hero content. Creates center focus without card structure. Not a shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "dot-pulse",
+        "value": "pulse 1.6s ease-in-out infinite",
+        "purpose": "Live Now badge indicator dot. The only animation in the system when live state is active. Requires reduced-motion fallback."
+      },
+      {
+        "name": "cta-hover",
+        "value": "opacity 0.2s ease, transform 0.2s ease",
+        "purpose": "CTA button hover: opacity 0.88, translateY(-1px). No shadow on hover."
+      },
+      {
+        "name": "ease-standard",
+        "value": "ease",
+        "purpose": "Default easing for state transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "700px",
+        "purpose": "Nav and hero padding reduction, countdown block minimum-width scaling."
+      },
+      {
+        "name": "pillars-3col",
+        "value": "860px",
+        "purpose": "Pillars grid switches from 1 to 3 columns."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "CTA Button",
+      "kind": "button",
+      "refersTo": "cta-button",
+      "description": "Primary action — Open App. Goal Green fill, black text, uppercase Inter 600. The most important element on the page.",
+      "html": "<a href=\"#\" class=\"ds-cta-btn\">Open App <svg viewBox=\"0 0 14 14\" fill=\"none\" style=\"width:14px;height:14px\"><path d=\"M2.5 7H11.5M7.5 3L11.5 7L7.5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #00e05a; color: #000; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 16px 40px; border-radius: 4px; transition: opacity 0.2s, transform 0.2s; cursor: pointer; } .ds-cta-btn:hover { opacity: 0.88; transform: translateY(-1px); } .ds-cta-btn:active { opacity: 1; transform: translateY(0); } .ds-cta-btn:focus-visible { outline: 2px solid #00e05a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Countdown Block",
+      "kind": "custom",
+      "refersTo": "countdown-block",
+      "description": "Single countdown unit — number + label. Dugout Grey background, Bebas Neue number, Inter label.",
+      "html": "<div class=\"ds-cd-block\"><span class=\"ds-cd-number\">48</span><span class=\"ds-cd-unit\">Hours</span></div>",
+      "css": ".ds-cd-block { display: flex; flex-direction: column; align-items: center; gap: 6px; } .ds-cd-number { display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 1; letter-spacing: 0.02em; color: #fff; background: #111111; border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; padding: 14px 18px; min-width: 72px; text-align: center; position: relative; } .ds-cd-number::after { content: ''; position: absolute; inset: 0; border-radius: 6px; box-shadow: 0 0 24px rgba(0,224,90,0.08); } .ds-cd-unit { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; }"
+    },
+    {
+      "name": "Live Badge",
+      "kind": "custom",
+      "refersTo": "live-badge",
+      "description": "Shown when the World Cup is underway. Pill badge with pulsing green dot — the only animation in the live state.",
+      "html": "<div class=\"ds-live-badge\"><div class=\"ds-live-dot\"></div><span class=\"ds-live-badge-text\">Live Now</span></div>",
+      "css": ".ds-live-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,224,90,0.1); border: 1px solid rgba(0,224,90,0.25); border-radius: 100px; padding: 8px 20px; } .ds-live-dot { width: 7px; height: 7px; border-radius: 50%; background: #00e05a; animation: ds-pulse 1.6s ease-in-out infinite; } @keyframes ds-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} } @media (prefers-reduced-motion: reduce) { .ds-live-dot { animation: none; } } .ds-live-badge-text { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #00e05a; }"
+    },
+    {
+      "name": "Pillar Feature Cell",
+      "kind": "card",
+      "refersTo": null,
+      "description": "One cell of the three-pillar features grid. Match Dark background, green dot accent, Bebas Neue title in Goal Green.",
+      "html": "<div class=\"ds-pillar\"><div class=\"ds-pillar-dot\"></div><h3 class=\"ds-pillar-title\">Goal Chance</h3><p class=\"ds-pillar-body\">Tracks live match intensity and tells you when a goal is unlikely.</p></div>",
+      "css": ".ds-pillar { background: #080808; padding: 36px 28px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; } .ds-pillar-dot { width: 6px; height: 6px; border-radius: 50%; background: #00e05a; margin-bottom: 4px; } .ds-pillar-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: #00e05a; margin: 0; } .ds-pillar-body { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 300; color: #fff; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Brand Logo",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "The NeverMiss wordmark. 'Never' in Goal Green, 'Miss' in Ink White. The brand split is the logo.",
+      "html": "<a href=\"#\" class=\"ds-brand-logo\"><span class=\"ds-brand-prefix\">Never</span><span class=\"ds-brand-suffix\">Miss</span></a>",
+      "css": ".ds-brand-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; text-decoration: none; } .ds-brand-prefix { color: #00e05a; } .ds-brand-suffix { color: #fff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Fan's Trusted Mate",
+    "overview": "NeverMiss is built for the fan who's half-watching from the couch and half-managing real life. The visual system behaves like a mate who's already thought of everything: no fuss, no fanfare, just a quick heads-up and you're sorted. Every design decision reflects that relationship — direct, confident, self-aware enough to have a sense of humor about bathroom breaks.\n\nThe palette is stadium-night dark, not because dark is aesthetically interesting, but because fans watch in dim rooms with phones at 40% brightness. The single accent — a vivid, alert-signal green — earns its impact by appearing sparingly. Typography commits fully to the display-body split: Bebas Neue carries event energy; Inter handles the human part.\n\nThis system explicitly rejects three aesthetic families the user named: the over-produced corporate sports brand (clean surface, zero soul); the SaaS landing-page pattern (hero metrics, gradient text, '10× your match experience'); and hypebeast streetwear maximalism (all-caps stacking, aggressive decoration, nothing left to breathe).",
+    "keyCharacteristics": [
+      "Near-black body, one sharp green accent, white ink — three ingredients, no filler",
+      "Bebas Neue at display scale: event-energy type that reads at arm's length",
+      "Inter Light for body: readable, low fatigue, no-fuss",
+      "Sparse decoration: radial green glow on the hero, 1px borders on blocks, nothing else",
+      "Direct copy: irreverent, specific, clearly fan-authored"
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Goal Green is the go-signal. It appears only where the interface means 'safe' or 'action': the CTA, the live indicator, brand type. Using it decoratively is forbidden. Rarity earns meaning.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Layer Rule",
+        "body": "Exactly two surface depths: Match Dark (body) and Dugout Grey (inset). No new surfaces, no tonal expansion. There is no third layer.",
+        "section": "colors"
+      },
+      {
+        "name": "The Voice-Split Rule",
+        "body": "Bebas Neue speaks for the event; Inter speaks for the human. Bebas Neue never runs at body scale. Inter never runs at display scale. The voices stay categorically distinct.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. The green glow is ambient, not reactive. No shadow lifts on hover — the CTA button hovers via opacity and translateY only. Structural shadows are prohibited.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do run body text at full Ink White (#ffffff) on Match Dark. 21:1 contrast; no qualification needed.",
+      "Do keep Goal Green on ≤15% of any surface. Its rarity is the brand.",
+      "Do use Bebas Neue for event-scale headings only (≥18px). Inter for everything else.",
+      "Do apply the Two-Layer Rule: Match Dark below, Dugout Grey for insets, nothing else.",
+      "Do use the gap-as-border pattern for the pillars grid. No individual card borders or backgrounds.",
+      "Do write copy that's specific and self-aware. 'Dropping a deuce' is on-brand. 'Step away at a safe moment' is not.",
+      "Do add @media (prefers-reduced-motion: reduce) for all animations."
+    ],
+    "donts": [
+      "Don't reproduce FIFA official / corporate aesthetics: sponsor-blue palettes, trophy renders, 'The Beautiful Game' language, dense stats UI.",
+      "Don't use SaaS landing-page patterns: hero metric templates, background-clip gradient text, numbered section eyebrows (01/02/03), cream or parchment backgrounds.",
+      "Don't use hypebeast streetwear patterns: all-caps stacking on every element, aggressive drop-shadow accumulation, border-left stripe accents.",
+      "Don't add a third surface depth. No new tinted containers, no modal-grey.",
+      "Don't use Goal Green for decoration — icon fills, arbitrary highlights, gradient endpoints.",
+      "Don't use glassmorphism or backdrop-filter decoratively.",
+      "Don't pair Inter with itself at different weights to create a heading — that's Bebas Neue's job."
+    ]
+  }
+}
