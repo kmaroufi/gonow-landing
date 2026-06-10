@@ -76,7 +76,7 @@ A single-file GitHub Pages landing page for **NeverMiss**, a FIFA World Cup 2026
 ### Key details
 - **App URL**: `https://app.nevermiss.click` (the CTA "Open App" button links here)
 - **Support email**: `support@nevermiss.click`
-- **World Cup kickoff target**: `2026-06-11T23:00:00Z` — countdown auto-switches to live state at this UTC time
+- **World Cup kickoff target**: `2026-06-11T19:00:00Z` (22:30 Tehran / UTC+3:30) — countdown auto-switches to live state at this UTC time
 - **Brand split**: "Never" (green, `data-brand-prefix`) + "Miss" (white, `data-brand-suffix`)
 - **Accent color**: `#00e05a` (CSS var `--green`)
 - **Fonts**: Bebas Neue (display/headings), Inter (body) — loaded from Google Fonts CDN
