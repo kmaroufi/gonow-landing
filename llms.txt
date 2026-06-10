@@ -1,11 +1,11 @@
-# Safely
+# NeverMiss
 
-> Safely is a FIFA World Cup 2026 companion app that tells you when it's safe to step away from a live match — so you never miss a goal.
+> NeverMiss is a FIFA World Cup 2026 companion app that tells you when it's safe to step away from a live match — so you never miss a goal.
 
 ## App
 
-- [Open App](https://app.safely.com): The Safely web app (PWA, no install needed).
+- [Open App](https://app.nevermiss.click): The NeverMiss web app (PWA, no install needed).
 
 ## Contact
 
-- [Support](mailto:support@safely.com)
+- [Support](mailto:support@nevermiss.click)

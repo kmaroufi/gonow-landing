@@ -62,10 +62,10 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 ---
 
-## Project: Safely — Landing Page
+## Project: NeverMiss — Landing Page
 
 ### What this repo is
-A single-file GitHub Pages landing page for **Safely**, a FIFA World Cup 2026 companion app. The app tells users when it's safe to step away from a match (bathroom break, snack, etc.) based on live match intensity.
+A single-file GitHub Pages landing page for **NeverMiss**, a FIFA World Cup 2026 companion app. The app tells users when it's safe to step away from a match (bathroom break, snack, etc.) based on live match intensity.
 
 ### Files
 | File | Purpose |
@@ -74,10 +74,10 @@ A single-file GitHub Pages landing page for **Safely**, a FIFA World Cup 2026 co
 | `.gitignore` | Excludes `peetactics_handoff/` (design handoff, not for production) |
 
 ### Key details
-- **App URL**: `https://app.safely.com` (the CTA "Open App" button links here)
-- **Support email**: `support@safely.com`
+- **App URL**: `https://app.nevermiss.click` (the CTA "Open App" button links here)
+- **Support email**: `support@nevermiss.click`
 - **World Cup kickoff target**: `2026-06-11T23:00:00Z` — countdown auto-switches to live state at this UTC time
-- **Brand split**: "Safe" (green, `data-brand-prefix`) + "ly" (white, `data-brand-suffix`)
+- **Brand split**: "Never" (green, `data-brand-prefix`) + "Miss" (white, `data-brand-suffix`)
 - **Accent color**: `#00e05a` (CSS var `--green`)
 - **Fonts**: Bebas Neue (display/headings), Inter (body) — loaded from Google Fonts CDN
 
@@ -92,4 +92,4 @@ GitHub Pages — root of `main` branch. No build step. Push `index.html` and it'
 
 ### Pending
 - Add `og-image.png` (1200×630px) to the repo root. Until then, social share cards will show no image but nothing breaks.
-- If a custom domain (`safely.com`) is set up, update the URLs in: canonical link, OG tags, JSON-LD, and `sitemap.xml`.
+- Custom domain `nevermiss.click` is active. Canonical link, OG tags, JSON-LD, and `sitemap.xml` all point to `https://nevermiss.click/`.
