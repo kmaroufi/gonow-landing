@@ -437,8 +437,7 @@
       .hero-sub,
       .hero-use-cases li,
       .cta-btn,
-      .countdown-wrapper,
-      .faq-item {
+      .countdown-wrapper {
         animation: none;
         opacity: 1;
       }
@@ -478,20 +477,14 @@
     /* ── ABOUT ── */
     .about {
       border-top: 1px solid var(--border);
-      padding: 40px 24px 80px;
+      padding: 80px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 56px;
     }
 
-    .about-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(32px, 5vw, 52px);
-      letter-spacing: 0.04em;
-      text-align: center;
-      color: var(--white);
-    }
+
 
     .pillars {
       display: grid;
@@ -670,12 +663,6 @@
       gap: 10px;
     }
 
-    .faq-item:nth-child(1) { animation: fade-in 380ms ease 100ms backwards; }
-    .faq-item:nth-child(2) { animation: fade-in 380ms ease 160ms backwards; }
-    .faq-item:nth-child(3) { animation: fade-in 380ms ease 220ms backwards; }
-    .faq-item:nth-child(4) { animation: fade-in 380ms ease 280ms backwards; }
-    .faq-item:nth-child(5) { animation: fade-in 380ms ease 340ms backwards; }
-
     .faq-q {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
@@ -779,7 +766,7 @@
     </div>
 
     <!-- WC LIVE STATE — shown automatically when World Cup starts -->
-    <div class="wc-live-state" id="wc-live-state" aria-live="polite">
+    <div class="wc-live-state" id="wc-live-state" aria-live="polite" aria-hidden="true">
       <div class="wc-live-badge">
         <div class="wc-live-dot"></div>
         <span class="wc-live-badge-text">Live Now</span>
@@ -797,7 +784,6 @@
 
   <!-- ABOUT -->
   <section class="about">
-    <h2 class="about-headline">Your match companion</h2>
     <div class="pillars">
       <div class="pillar">
         <h3 class="pillar-title">Goal Chance</h3>
@@ -856,10 +842,14 @@
       var wcLive = document.getElementById('wc-live-state');
       if (started) {
         cdWrapper.style.display = 'none';
+        cdWrapper.setAttribute('aria-hidden', 'true');
         wcLive.style.display = 'flex';
+        wcLive.setAttribute('aria-hidden', 'false');
       } else {
         cdWrapper.style.display = '';
+        cdWrapper.setAttribute('aria-hidden', 'false');
         wcLive.style.display = 'none';
+        wcLive.setAttribute('aria-hidden', 'true');
       }
     }
 
@@ -878,6 +868,7 @@
         document.getElementById('cd-hours').textContent = '00';
         document.getElementById('cd-mins').textContent  = '00';
         document.getElementById('cd-secs').textContent  = '00';
+        clearInterval(timer);
         return;
       }
 
@@ -893,7 +884,7 @@
     }
 
     tick();
-    setInterval(tick, 1000);
+    var timer = setInterval(tick, 1000);
   </script>
 
 </body>
