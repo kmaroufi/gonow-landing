@@ -437,7 +437,10 @@
       .hero-sub,
       .hero-use-cases li,
       .cta-btn,
-      .countdown-wrapper {
+      .countdown-wrapper,
+      .moment-problem,
+      .moment-headline,
+      .moment-body {
         animation: none;
         opacity: 1;
       }
@@ -538,6 +541,47 @@
       line-height: 1.6;
       text-wrap: pretty;
       text-align: center;
+    }
+
+    /* ── MOMENT ── */
+    .moment {
+      border-top: 1px solid var(--border);
+      padding: 120px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .moment-problem {
+      font-size: clamp(20px, 3.5vw, 32px);
+      font-weight: 300;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.50);
+      max-width: 52ch;
+      text-wrap: pretty;
+      margin-bottom: 56px;
+      animation: fade-in 420ms ease 80ms backwards;
+    }
+
+    .moment-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 9vw, 88px);
+      letter-spacing: 0.03em;
+      line-height: 0.95;
+      color: var(--green);
+      margin-bottom: 24px;
+      animation: fade-in 380ms ease 200ms backwards;
+    }
+
+    .moment-body {
+      font-size: clamp(16px, 2.5vw, 19px);
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.65);
+      max-width: 52ch;
+      text-wrap: pretty;
+      animation: fade-in 360ms ease 320ms backwards;
     }
 
     /* ── FOOTER ── */
@@ -780,6 +824,16 @@
         <path d="M1 1L10 10L19 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
+  </section>
+
+  <!-- MOMENT: PROBLEM → RELIEF -->
+  <section class="moment" aria-label="The problem NeverMiss solves">
+    <p class="moment-problem">
+      You stepped out for two minutes.<br>
+      Argentina scored.
+    </p>
+    <h2 class="moment-headline">Not anymore.</h2>
+    <p class="moment-body">NeverMiss tracks live match intensity. When goal chance drops, we tell you it's safe — so you can step away without the dread.</p>
   </section>
 
   <!-- ABOUT -->
