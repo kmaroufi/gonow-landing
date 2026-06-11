@@ -3,3 +3,4 @@ peetactics_handoff/
 .agents/
 skills-lock.json
 .impeccable/
+.playwright-mcp/

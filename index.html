@@ -9,6 +9,7 @@
   <!-- SEO -->
   <meta name="description" content="We tell you when it's safe to step away from a FIFA World Cup 2026 match. Never miss a goal — real-time break recommendations based on live match intensity." />
   <link rel="canonical" href="https://nevermiss.click/" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -47,6 +48,51 @@
           "price": "0",
           "priceCurrency": "USD"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is it safe to go to the bathroom right now?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NeverMiss tracks live match intensity. When goal chance drops, we tell you it's safe."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is NeverMiss free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Open app.nevermiss.click and it works."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does NeverMiss know when a goal is coming?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We monitor live match intensity signals: pressure, possession, shots, momentum. When all signals are quiet, it's your window."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does NeverMiss work at the stadium?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Works anywhere you have signal: stadium, pub, couch."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which matches does NeverMiss cover?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All 104 FIFA World Cup 2026 matches."
+            }
+          }
+        ]
       }
     ]
   }
@@ -80,6 +126,8 @@
       --white: #ffffff;
       --muted: rgba(255,255,255,0.65);
       --border: rgba(255,255,255,0.07);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     html {
@@ -94,6 +142,22 @@
       min-height: 100dvh;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── ENTRANCE ANIMATIONS ── */
+    @keyframes nav-drop {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes headline-snap {
+      from { opacity: 0; letter-spacing: 0.12em; }
+      to { opacity: 1; letter-spacing: 0.02em; }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* ── SKIP LINK ── */
@@ -127,6 +191,7 @@
       align-items: center;
       justify-content: space-between;
       background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%);
+      animation: nav-drop 350ms var(--ease-out-expo) backwards;
     }
 
     .nav-logo {
@@ -173,6 +238,7 @@
       letter-spacing: 0.02em;
       color: var(--white);
       margin-bottom: 28px;
+      animation: headline-snap 520ms var(--ease-out-expo) 80ms backwards;
     }
 
     .hero-headline em {
@@ -188,6 +254,7 @@
       line-height: 1.65;
       margin-bottom: 20px;
       text-wrap: pretty;
+      animation: fade-in 400ms ease 280ms backwards;
     }
 
     .hero-use-cases {
@@ -208,6 +275,10 @@
       gap: 10px;
     }
 
+    .hero-use-cases li:nth-child(1) { animation: fade-in 380ms ease 400ms backwards; }
+    .hero-use-cases li:nth-child(2) { animation: fade-in 380ms ease 460ms backwards; }
+    .hero-use-cases li:nth-child(3) { animation: fade-in 380ms ease 520ms backwards; }
+
     /* ── CTA ── */
     .cta-btn {
       display: inline-flex;
@@ -225,6 +296,7 @@
       border-radius: 4px;
       transition: opacity 0.2s, transform 0.2s;
       margin-bottom: 48px;
+      animation: fade-in 350ms var(--ease-out-quart) 620ms backwards;
     }
 
     .cta-btn:hover {
@@ -250,6 +322,7 @@
     /* ── COUNTDOWN ── */
     .countdown-wrapper {
       margin-bottom: 56px;
+      animation: fade-in 320ms ease 780ms backwards;
     }
 
     .countdown-label {
@@ -359,6 +432,16 @@
       .hero::before { animation: none; }
       .cd-sep { animation: none; opacity: 0.4; }
       .hero-scroll-cue { animation: none; opacity: 0.3; }
+      nav,
+      .hero-headline,
+      .hero-sub,
+      .hero-use-cases li,
+      .cta-btn,
+      .countdown-wrapper,
+      .faq-item {
+        animation: none;
+        opacity: 1;
+      }
     }
 
     .wc-live-badge-text {
@@ -548,6 +631,76 @@
       }
     }
 
+    /* ── FAQ ── */
+    .faq {
+      border-top: 1px solid var(--border);
+      padding: 80px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .faq-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: 0.04em;
+      text-align: center;
+      color: var(--white);
+      text-wrap: balance;
+    }
+
+    .faq-list {
+      width: 100%;
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item:nth-child(1) { animation: fade-in 380ms ease 100ms backwards; }
+    .faq-item:nth-child(2) { animation: fade-in 380ms ease 160ms backwards; }
+    .faq-item:nth-child(3) { animation: fade-in 380ms ease 220ms backwards; }
+    .faq-item:nth-child(4) { animation: fade-in 380ms ease 280ms backwards; }
+    .faq-item:nth-child(5) { animation: fade-in 380ms ease 340ms backwards; }
+
+    .faq-q {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      color: var(--white);
+    }
+
+    .faq-a {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+      text-wrap: pretty;
+      max-width: 65ch;
+    }
+
+    @media (max-width: 700px) {
+      .faq {
+        padding: 60px 20px;
+      }
+      .faq-item {
+        padding: 22px 20px;
+      }
+    }
+
     @media (max-width: 400px) {
       .cd-block {
         min-width: 50px;
@@ -659,6 +812,33 @@
         <p class="pillar-body">Instant-access PWA. No install needed.</p>
       </div>
     </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="faq-headline">Common Questions</h2>
+    <dl class="faq-list">
+      <div class="faq-item">
+        <dt class="faq-q">Is it safe to go to the bathroom right now?</dt>
+        <dd class="faq-a">NeverMiss tracks live match intensity. When goal chance drops, we tell you it's safe.</dd>
+      </div>
+      <div class="faq-item">
+        <dt class="faq-q">Is NeverMiss free?</dt>
+        <dd class="faq-a">Yes. Open app.nevermiss.click and it works.</dd>
+      </div>
+      <div class="faq-item">
+        <dt class="faq-q">How does NeverMiss know when a goal is coming?</dt>
+        <dd class="faq-a">We monitor live match intensity signals: pressure, possession, shots, momentum. When all signals are quiet, it's your window.</dd>
+      </div>
+      <div class="faq-item">
+        <dt class="faq-q">Does NeverMiss work at the stadium?</dt>
+        <dd class="faq-a">Works anywhere you have signal: stadium, pub, couch.</dd>
+      </div>
+      <div class="faq-item">
+        <dt class="faq-q">Which matches does NeverMiss cover?</dt>
+        <dd class="faq-a">All 104 FIFA World Cup 2026 matches.</dd>
+      </div>
+    </dl>
   </section>
 
   </main>
