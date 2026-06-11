@@ -1,2 +1,4 @@
 peetactics_handoff/
 .claude/
+.agents/
+skills-lock.json
