@@ -65,12 +65,16 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ## Project: NeverMiss — Landing Page
 
 ### What this repo is
-A single-file GitHub Pages landing page for **NeverMiss**, a FIFA World Cup 2026 companion app. The app tells users when it's safe to step away from a match (bathroom break, snack, etc.) based on live match intensity.
+A GitHub Pages landing page for **NeverMiss**, a FIFA World Cup 2026 companion app. The app tells users when it's safe to step away from a match (bathroom break, snack, etc.) based on live match intensity.
 
 ### Files
 | File | Purpose |
 |------|---------|
-| `index.html` | The entire site — HTML, CSS, JS, and base64 assets in one file |
+| `index.html` | Landing page — HTML, CSS, JS, and base64 assets in one file |
+| `articles/article.css` | Shared stylesheet for all article pages |
+| `articles/why-nevermiss.html` | Article: origin story / why the app exists |
+| `articles/bathroom-break-stats.html` | Article: research stats on bathroom anxiety |
+| `articles/group-stage-break-guide.html` | Article: when to step away guide by match type |
 | `.gitignore` | Excludes `peetactics_handoff/` (design handoff, not for production) |
 
 ### Key details
@@ -82,7 +86,7 @@ A single-file GitHub Pages landing page for **NeverMiss**, a FIFA World Cup 2026
 - **Fonts**: Bebas Neue (display/headings), Inter (body) — loaded from Google Fonts CDN
 
 ### Google Analytics
-GA is **commented out** in `<head>`. To activate: uncomment the two script tags and replace both `G-XXXXXXXXXX` placeholders with the real Measurement ID.
+GA is **active** on all pages with measurement ID `G-BR15ZR657Z`. Both script tags are uncommented and live in `index.html` and all three article pages.
 
 ### Design source
 `peetactics_handoff/` contains the original multi-file React/Babel prototype with the tweaks panel and full app screens. It is gitignored and should not be modified. The production `index.html` was derived from `peetactics_handoff/index.html` with React/Babel removed, assets inlined, and the CSS bug fixed.

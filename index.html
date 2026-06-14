@@ -751,6 +751,80 @@
         gap: 3px;
       }
     }
+
+    /* ── FROM THE PITCH ── */
+    .pitch {
+      border-top: 1px solid var(--border);
+      padding: 80px 40px 100px;
+    }
+
+    .pitch-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 4.5vw, 52px);
+      letter-spacing: 0.04em;
+      color: var(--white);
+      max-width: 1160px;
+      margin: 0 auto 48px;
+    }
+
+    .pitch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .pitch-item {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px 32px 0;
+    }
+
+    .pitch-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .pitch-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(22px, 2.8vw, 30px);
+      letter-spacing: 0.03em;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 14px;
+      text-wrap: balance;
+      overflow-wrap: break-word;
+    }
+
+    .pitch-excerpt {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 40ch;
+      text-wrap: pretty;
+      margin-bottom: 20px;
+    }
+
+    .pitch-read {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--green);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: opacity 0.2s;
+    }
+    .pitch-read:hover { opacity: 0.7; }
+    .pitch-read:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 2px; }
+
+    @media (max-width: 700px) {
+      .pitch { padding: 60px 20px 80px; }
+      .pitch-item { padding: 28px 0 0; }
+    }
   </style>
 </head>
 <body>
@@ -759,7 +833,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo"><span data-brand-prefix>Never</span><span data-brand-suffix>Miss</span></a>
+    <a href="/" class="nav-logo"><span data-brand-prefix>Never</span><span data-brand-suffix>Miss</span></a>
   </nav>
 
   <main id="main-content">
@@ -881,11 +955,36 @@
     </dl>
   </section>
 
+  <!-- FROM THE PITCH -->
+  <section class="pitch" aria-labelledby="pitch-heading">
+    <h2 class="pitch-headline" id="pitch-heading">From the Pitch</h2>
+    <div class="pitch-grid">
+      <article class="pitch-item">
+        <p class="pitch-tag">Origin Story · June 2026 · 2 min read</p>
+        <h3 class="pitch-title">You Stepped Out. Argentina Scored.</h3>
+        <p class="pitch-excerpt">52% of fans have missed their team score in the bathroom. Nobody built anything for live football to fix it.</p>
+        <a href="./articles/why-nevermiss.html" class="pitch-read">Read →</a>
+      </article>
+      <article class="pitch-item">
+        <p class="pitch-tag">Research · June 2026 · 2 min read</p>
+        <h3 class="pitch-title">The Data Behind Your Bathroom Anxiety</h3>
+        <p class="pitch-excerpt">The study that proved it: 52% missed a goal, 95% now hold it in. Here's what the numbers say.</p>
+        <a href="./articles/bathroom-break-stats.html" class="pitch-read">Read →</a>
+      </article>
+      <article class="pitch-item">
+        <p class="pitch-tag">Guide · June 2026 · 2 min read</p>
+        <h3 class="pitch-title">The 2026 World Cup Break Guide</h3>
+        <p class="pitch-excerpt">Group stage to final. When it's safe to step away, and when it isn't.</p>
+        <a href="./articles/group-stage-break-guide.html" class="pitch-read">Read →</a>
+      </article>
+    </div>
+  </section>
+
   </main>
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-logo"><span data-brand-prefix>Never</span><span data-brand-suffix>Miss</span></span>
+    <a href="/" class="footer-logo"><span data-brand-prefix>Never</span><span data-brand-suffix>Miss</span></a>
     <a href="mailto:support@nevermiss.click" class="footer-contact">support@nevermiss.click</a>
     <span class="footer-note">© 2026 <span data-brand>NeverMiss</span></span>
   </footer>

@@ -60,6 +60,15 @@ components:
     textColor: "{colors.goal-green}"
     rounded: "{rounded.pill}"
     padding: "8px 20px"
+  faq-item:
+    backgroundColor: "{colors.dugout-grey}"
+    rounded: "{rounded.md}"
+    padding: "28px"
+  article-float-pill:
+    backgroundColor: "{colors.goal-green}"
+    textColor: "#000000"
+    rounded: "{rounded.pill}"
+    padding: "12px 20px"
 ---
 
 # Design System: NeverMiss
@@ -173,6 +182,49 @@ This system is flat by default. There are no structural box-shadows. Depth is im
 - **Text:** Inter 600, 11px, uppercase, tracking 0.18em, Goal Green.
 - **Dot:** 7px circle, Goal Green, `animation: pulse 1.6s ease-in-out infinite`. The sole persistent animation in the system.
 - **Reduced motion:** `@media (prefers-reduced-motion: reduce)` — dot static at full opacity; no pulse.
+
+### Moment / Problem-Relief Section
+*The emotional gut-punch. Fan problem stated, then demolished in two words at display scale.*
+- **Layout:** Full-width centered column, `padding: 120px 24px`. No max-width — the text is the event.
+- **Problem** (`.moment-problem`): Inter 300, `clamp(20px, 3.5vw, 32px)`, Ink White, max 52ch, line-height 1.5. Speaks the shared fan experience; sets recognition before the answer.
+- **Resolution** (`.moment-headline`): Bebas Neue, `clamp(52px, 9vw, 88px)`, Goal Green, tracking 0.03em, line-height 0.95. The app's answer at maximum scale. Only instance where Goal Green appears at display weight on the landing page.
+- **Body** (`.moment-body`): Inter 300, `clamp(16px, 2.5vw, 19px)`, muted (`rgba(255,255,255,0.65)`), max 52ch. One concise explanation; no further elaboration.
+- **Motion:** Staggered `fade-in` — problem 420ms at 80ms delay, headline 380ms at 200ms, body 360ms at 320ms. Reduced motion: all static at `opacity: 1`.
+
+### FAQ List
+*Definition list. Gap-as-border container. All items always visible — no accordion.*
+- **Structure:** `<dl>` + `<div class="faq-item">` + `<dt>` / `<dd>`. No `<details>/<summary>`, no expand/collapse JS. Questions are short; everything shows.
+- **Container:** Max-width 760px, `gap: 1px`, `background: var(--border)`, `border-radius: 6px`, overflow hidden — the same gap-as-border pattern as Pillars and more-articles block.
+- **Item:** Dugout Grey (`#111111`) fill, `padding: 28px`. Static surface.
+- **Question** (`.faq-q`): Bebas Neue 20px, tracking 0.06em, Ink White. Event-register type signals confidence, not bureaucracy.
+- **Answer** (`.faq-a`): Inter 300, 15px, muted, line-height 1.6, max 65ch.
+
+### Article Cards (From the Pitch)
+*Editorial index linking to long-form articles. Border-top-per-item, not gap-as-border.*
+- **Grid:** `repeat(auto-fit, minmax(280px, 1fr))`, `gap: 0`. Max-width 1160px centered on both the section headline and the grid. Each card carries `border-top: 1px solid var(--border)` — distinguishes this from the Pillars pattern where the gap itself is the border.
+- **Tag** (`.pitch-tag`): Inter 500, 11px, uppercase, tracking 0.2em, muted. Category · date · read time.
+- **Title** (`.pitch-title`): Bebas Neue, `clamp(22px, 2.8vw, 30px)`, tracking 0.03em, Ink White, line-height 1.
+- **Excerpt** (`.pitch-excerpt`): Inter 300, 14px, muted, line-height 1.7, max 40ch.
+- **Read link** (`.pitch-read`): Inter 500, 13px, Goal Green, tracking 0.06em, no underline. Hover: `opacity: 0.7`.
+
+### Article Page Surface
+*Narrower reading column (760px max) vs. landing page (1160px). New surface type.*
+- **Hero** (`.article-hero`): `padding: 148px 24px 64px`, `border-bottom: 1px solid var(--border)`. Entrance: `fade-up 560ms ease-out-expo 60ms backwards`.
+- **Headline** (`.article-headline`): Bebas Neue, `clamp(44px, 7vw, 76px)`, line-height 0.93, tracking 0.02em. Same letter as landing display; smaller scale, tighter line-height.
+- **Dek** (`.article-dek`): Inter 300, `clamp(17px, 2.2vw, 20px)`, line-height 1.6, `rgba(255,255,255,0.82)`, max 54ch.
+- **Meta** (`.article-meta`): Inter 500, 11px, uppercase, tracking 0.14em, muted. Category label in Goal Green.
+- **Body** (`.article-body`): `padding: 64px 24px 80px`. Body `<p>`: Inter 300, `clamp(16px, 1.9vw, 18px)`, line-height 1.82, max 65ch. `<h2>`: Bebas Neue `clamp(24px, 3.2vw, 34px)`, tracking 0.05em.
+- **Pullquote** (`.pullquote`): Bebas Neue, `clamp(32px, 5vw, 52px)`, Ink White. Emotional one-liner; no border, no visual chrome — the type is the statement.
+- **More Articles list:** Gap-as-border container identical to FAQ; hover shifts cell from Match Dark to Dugout Grey.
+- **Motion:** Body section entrance `fade-in 500ms ease 280ms backwards`. Reduced motion: both hero and body `animation: none; opacity: 1`.
+
+### Float CTA Pill
+*Articles only. Smart-visibility: shows when hero has scrolled away and inline CTA is off-screen.*
+- **Position:** Fixed, `bottom: max(24px, env(safe-area-inset-bottom) + 12px)`, `right: 24px`, `z-index: 50`.
+- **Shape:** Full pill (`border-radius: 100px`), `padding: 12px 20px`. Smaller than the inline CTA (`16px 40px`); pill vs. square radius signals "persistent shortcut" not "primary action."
+- **Fill:** Goal Green, black text. Identical color treatment to the primary CTA button.
+- **Visibility:** Dual IntersectionObserver — activates when `.article-hero` exits viewport AND `.article-cta` is not intersecting. Hidden default: `opacity: 0; pointer-events: none; transform: translateY(8px)`.
+- **Transition:** `opacity 0.25s ease-out-expo, transform 0.25s ease-out-expo`. Reduced motion: opacity transition only, `transform: none`.
 
 ## 6. Do's and Don'ts
 
