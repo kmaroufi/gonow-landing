@@ -437,13 +437,13 @@
       .hero-sub,
       .hero-use-cases li,
       .cta-btn,
-      .countdown-wrapper,
-      .moment-problem,
-      .moment-headline,
-      .moment-body {
+      .countdown-wrapper {
         animation: none;
         opacity: 1;
       }
+      .js .reveal { transition: none; opacity: 1; transform: none; }
+      .js .reveal-snap { opacity: 1; }
+      .js .reveal-snap.is-revealed { animation: none; }
     }
 
     .wc-live-badge-text {
@@ -561,7 +561,6 @@
       max-width: 52ch;
       text-wrap: pretty;
       margin-bottom: 56px;
-      animation: fade-in 420ms ease 80ms backwards;
     }
 
     .moment-headline {
@@ -571,7 +570,6 @@
       line-height: 0.95;
       color: var(--green);
       margin-bottom: 24px;
-      animation: fade-in 380ms ease 200ms backwards;
     }
 
     .moment-body {
@@ -581,7 +579,29 @@
       color: rgba(255,255,255,0.65);
       max-width: 52ch;
       text-wrap: pretty;
-      animation: fade-in 360ms ease 320ms backwards;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    @keyframes reveal-snap {
+      from { opacity: 0; letter-spacing: 0.12em; }
+      to   { opacity: 1; letter-spacing: 0.03em; }
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 520ms var(--ease-out-expo), transform 520ms var(--ease-out-expo);
+      transition-delay: calc(var(--i, 0) * 80ms);
+    }
+    .js .reveal.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .js .reveal-snap { opacity: 0; }
+    .js .reveal-snap.is-revealed {
+      opacity: 1;
+      animation: reveal-snap 520ms var(--ease-out-expo) calc(var(--i, 0) * 80ms) backwards;
     }
 
     /* ── FOOTER ── */
@@ -765,6 +785,7 @@
       color: var(--white);
       max-width: 1160px;
       margin: 0 auto 48px;
+      text-align: center;
     }
 
     .pitch-grid {
@@ -826,6 +847,7 @@
       .pitch-item { padding: 28px 0 0; }
     }
   </style>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -902,26 +924,26 @@
 
   <!-- MOMENT: PROBLEM → RELIEF -->
   <section class="moment" aria-label="The problem NeverMiss solves">
-    <p class="moment-problem">
+    <p class="moment-problem reveal" style="--i:0">
       You stepped out for two minutes.<br>
       Argentina scored.
     </p>
-    <h2 class="moment-headline">Not anymore.</h2>
-    <p class="moment-body">NeverMiss tracks live match intensity. When goal chance drops, we tell you it's safe to step away without the dread.</p>
+    <h2 class="moment-headline reveal-snap" style="--i:1">Not anymore.</h2>
+    <p class="moment-body reveal" style="--i:2">NeverMiss tracks live match intensity. When goal chance drops, we tell you it's safe to step away without the dread.</p>
   </section>
 
   <!-- ABOUT -->
   <section class="about">
     <div class="pillars">
-      <div class="pillar">
+      <div class="pillar reveal" style="--i:0">
         <h3 class="pillar-title">Goal Chance</h3>
         <p class="pillar-body">Tracks live match intensity and tells you when a goal is unlikely.</p>
       </div>
-      <div class="pillar">
+      <div class="pillar reveal" style="--i:1">
         <h3 class="pillar-title">Stadium & Home</h3>
         <p class="pillar-body">Works wherever you're watching, in the stands or on your couch.</p>
       </div>
-      <div class="pillar">
+      <div class="pillar reveal" style="--i:2">
         <h3 class="pillar-title">Always Ready</h3>
         <p class="pillar-body">Instant-access PWA. No install needed.</p>
       </div>
@@ -932,23 +954,23 @@
   <section class="faq">
     <h2 class="faq-headline">Common Questions</h2>
     <dl class="faq-list">
-      <div class="faq-item">
+      <div class="faq-item reveal" style="--i:0">
         <dt class="faq-q">Is it safe to go to the bathroom right now?</dt>
         <dd class="faq-a">NeverMiss tracks live match intensity. When goal chance drops, we tell you it's safe.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal" style="--i:1">
         <dt class="faq-q">Is NeverMiss free?</dt>
         <dd class="faq-a">Yes. Open app.nevermiss.click and it works.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal" style="--i:2">
         <dt class="faq-q">How does NeverMiss know when a goal is coming?</dt>
         <dd class="faq-a">We monitor live match intensity signals: pressure, possession, shots, momentum. When all signals are quiet, it's your window.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal" style="--i:3">
         <dt class="faq-q">Does NeverMiss work at the stadium?</dt>
         <dd class="faq-a">Works anywhere you have signal: stadium, pub, couch.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal" style="--i:4">
         <dt class="faq-q">Which matches does NeverMiss cover?</dt>
         <dd class="faq-a">All 104 FIFA World Cup 2026 matches.</dd>
       </div>
@@ -959,19 +981,19 @@
   <section class="pitch" aria-labelledby="pitch-heading">
     <h2 class="pitch-headline" id="pitch-heading">From the Pitch</h2>
     <div class="pitch-grid">
-      <article class="pitch-item">
+      <article class="pitch-item reveal" style="--i:0">
         <p class="pitch-tag">Origin Story · June 2026 · 2 min read</p>
         <h3 class="pitch-title">You Stepped Out. Argentina Scored.</h3>
         <p class="pitch-excerpt">52% of fans have missed their team score in the bathroom. Nobody built anything for live football to fix it.</p>
         <a href="./articles/why-nevermiss.html" class="pitch-read">Read →</a>
       </article>
-      <article class="pitch-item">
+      <article class="pitch-item reveal" style="--i:1">
         <p class="pitch-tag">Research · June 2026 · 2 min read</p>
         <h3 class="pitch-title">The Data Behind Your Bathroom Anxiety</h3>
         <p class="pitch-excerpt">The study that proved it: 52% missed a goal, 95% now hold it in. Here's what the numbers say.</p>
         <a href="./articles/bathroom-break-stats.html" class="pitch-read">Read →</a>
       </article>
-      <article class="pitch-item">
+      <article class="pitch-item reveal" style="--i:2">
         <p class="pitch-tag">Guide · June 2026 · 2 min read</p>
         <h3 class="pitch-title">The 2026 World Cup Break Guide</h3>
         <p class="pitch-excerpt">Group stage to final. When it's safe to step away, and when it isn't.</p>
@@ -1038,6 +1060,21 @@
 
     tick();
     var timer = setInterval(tick, 1000);
+
+    // Scroll reveal
+    (function() {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-revealed');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal, .reveal-snap').forEach(function(el) {
+        io.observe(el);
+      });
+    })();
   </script>
 
 </body>

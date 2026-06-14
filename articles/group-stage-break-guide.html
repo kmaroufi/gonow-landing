@@ -38,6 +38,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./article.css" />
+  <script>document.documentElement.classList.add('js');</script>
 
   <style>
     .guide-table {
@@ -139,7 +140,7 @@
         <p>Penalty shootouts: don't leave. Each kick takes about 60 seconds, the crowd reacts to every one, and you'll hear it from the bathroom anyway.</p>
 
         <div class="guide-table" aria-label="Safe vs risky break windows">
-          <div class="guide-col">
+          <div class="guide-col reveal" style="--i:0">
             <div class="guide-col-header safe">Safer windows</div>
             <div class="guide-cell">
               <div class="guide-item">
@@ -156,7 +157,7 @@
               </div>
             </div>
           </div>
-          <div class="guide-col">
+          <div class="guide-col reveal" style="--i:1">
             <div class="guide-col-header risky">Avoid these</div>
             <div class="guide-cell">
               <div class="guide-item">
@@ -198,11 +199,11 @@
     <section class="more-articles" aria-label="More from NeverMiss">
       <h2 class="more-articles-heading">More from NeverMiss</h2>
       <div class="more-articles-list">
-        <a href="/articles/bathroom-break-stats.html" class="more-article-link">
+        <a href="./bathroom-break-stats.html" class="more-article-link reveal" style="--i:0">
           <div class="more-article-title">The Data Behind Your Bathroom Anxiety</div>
           <div class="more-article-dek">52% missed a goal. 95% hold it in. The study that proved this was never just paranoia.</div>
         </a>
-        <a href="/articles/why-nevermiss.html" class="more-article-link">
+        <a href="./why-nevermiss.html" class="more-article-link reveal" style="--i:1">
           <div class="more-article-title">You Stepped Out. Argentina Scored.</div>
           <div class="more-article-dek">Why nobody solved bathroom breaks at live football until now, and what NeverMiss reads.</div>
         </a>
@@ -239,6 +240,15 @@
       .observe(document.querySelector('.article-hero'));
     new IntersectionObserver(function (e) { ctaVisible = e[0].isIntersecting; sync(); }, { threshold: 0.1 })
       .observe(document.querySelector('.article-cta'));
+  })();
+
+  (function() {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('is-revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .pullquote').forEach(function(el) { io.observe(el); });
   })();
   </script>
 
