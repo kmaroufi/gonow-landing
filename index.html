@@ -152,8 +152,8 @@
     }
 
     @keyframes headline-snap {
-      from { opacity: 0; letter-spacing: 0.12em; }
-      to { opacity: 1; letter-spacing: 0.02em; }
+      from { opacity: 0; transform: translateY(-4px) scaleX(0.98); }
+      to { opacity: 1; transform: translateY(0) scaleX(1); }
     }
 
     @keyframes fade-in {
@@ -178,6 +178,18 @@
 
     .skip-link:focus {
       top: 0;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     /* ── NAV ── */
@@ -270,7 +282,7 @@
     .hero-use-cases li {
       font-size: clamp(15px, 2vw, 18px);
       font-weight: 300;
-      color: rgba(255,255,255,0.72);
+      color: var(--muted);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -442,8 +454,7 @@
         animation: none;
         opacity: 1;
       }
-      .js .reveal { transition: none; opacity: 1; transform: none; }
-      .js .reveal-snap { opacity: 1; }
+      .js .reveal.is-revealed { animation: none; }
       .js .reveal-snap.is-revealed { animation: none; }
     }
 
@@ -538,7 +549,7 @@
     .pillar-body {
       font-size: 16px;
       font-weight: 300;
-      color: var(--muted);
+      color: var(--white);
       line-height: 1.6;
       text-wrap: pretty;
       text-align: center;
@@ -583,26 +594,22 @@
     }
 
     /* ── SCROLL REVEAL ── */
+    @keyframes reveal-up {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     @keyframes reveal-snap {
-      from { opacity: 0; letter-spacing: 0.12em; }
-      to   { opacity: 1; letter-spacing: 0.03em; }
+      from { opacity: 0; transform: translateY(8px) scaleX(0.97); }
+      to   { opacity: 1; transform: translateY(0) scaleX(1); }
     }
 
-    .js .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 520ms var(--ease-out-expo), transform 520ms var(--ease-out-expo);
-      transition-delay: calc(var(--i, 0) * 80ms);
-    }
     .js .reveal.is-revealed {
-      opacity: 1;
-      transform: translateY(0);
+      animation: reveal-up 520ms var(--ease-out-expo) calc(var(--i, 0) * 80ms) both;
     }
 
-    .js .reveal-snap { opacity: 0; }
     .js .reveal-snap.is-revealed {
-      opacity: 1;
-      animation: reveal-snap 520ms var(--ease-out-expo) calc(var(--i, 0) * 80ms) backwards;
+      animation: reveal-snap 520ms var(--ease-out-expo) calc(var(--i, 0) * 80ms) both;
     }
 
     /* ── FOOTER ── */
@@ -621,6 +628,7 @@
       font-size: 22px;
       letter-spacing: 0.06em;
       color: var(--white);
+      padding: 8px 0;
     }
 
     .footer-contact {
@@ -630,6 +638,7 @@
       text-decoration: none;
       letter-spacing: 0.02em;
       transition: color 0.2s;
+      padding: 8px 0;
     }
 
     .footer-contact:hover {
@@ -888,17 +897,17 @@
           <span class="cd-number" id="cd-days">00</span>
           <span class="cd-unit">Days</span>
         </div>
-        <span class="cd-sep">:</span>
+        <span class="cd-sep" aria-hidden="true">:</span>
         <div class="cd-block">
           <span class="cd-number" id="cd-hours">00</span>
           <span class="cd-unit">Hours</span>
         </div>
-        <span class="cd-sep">:</span>
+        <span class="cd-sep" aria-hidden="true">:</span>
         <div class="cd-block">
           <span class="cd-number" id="cd-mins">00</span>
           <span class="cd-unit">Mins</span>
         </div>
-        <span class="cd-sep">:</span>
+        <span class="cd-sep" aria-hidden="true">:</span>
         <div class="cd-block">
           <span class="cd-number" id="cd-secs">00</span>
           <span class="cd-unit">Secs</span>
@@ -934,7 +943,8 @@
   </section>
 
   <!-- ABOUT -->
-  <section class="about">
+  <section class="about" aria-labelledby="pillars-heading">
+    <h2 id="pillars-heading" class="sr-only">How NeverMiss Works</h2>
     <div class="pillars">
       <div class="pillar reveal" style="--i:0">
         <h3 class="pillar-title">Goal Chance</h3>
@@ -952,8 +962,8 @@
   </section>
 
   <!-- FAQ -->
-  <section class="faq">
-    <h2 class="faq-headline">Common Questions</h2>
+  <section class="faq" aria-labelledby="faq-heading">
+    <h2 class="faq-headline" id="faq-heading">Common Questions</h2>
     <dl class="faq-list">
       <div class="faq-item reveal" style="--i:0">
         <dt class="faq-q">Is it safe to go to the bathroom right now?</dt>
