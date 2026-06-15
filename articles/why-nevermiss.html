@@ -160,6 +160,11 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal, .pullquote').forEach(function(el) { io.observe(el); });
+    setTimeout(function() {
+      document.querySelectorAll('.reveal:not(.is-revealed), .pullquote:not(.is-revealed)').forEach(function(el) {
+        el.classList.add('is-revealed');
+      });
+    }, 2500);
   })();
   </script>
 

@@ -454,7 +454,8 @@
         animation: none;
         opacity: 1;
       }
-      .js .reveal.is-revealed { animation: none; }
+      .js .reveal { transition: none; opacity: 1; transform: none; }
+      .js .reveal-snap { opacity: 1; }
       .js .reveal-snap.is-revealed { animation: none; }
     }
 
@@ -594,21 +595,25 @@
     }
 
     /* ── SCROLL REVEAL ── */
-    @keyframes reveal-up {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
     @keyframes reveal-snap {
       from { opacity: 0; transform: translateY(8px) scaleX(0.97); }
       to   { opacity: 1; transform: translateY(0) scaleX(1); }
     }
 
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 520ms var(--ease-out-expo), transform 520ms var(--ease-out-expo);
+      transition-delay: calc(var(--i, 0) * 80ms);
+    }
     .js .reveal.is-revealed {
-      animation: reveal-up 520ms var(--ease-out-expo) calc(var(--i, 0) * 80ms) both;
+      opacity: 1;
+      transform: translateY(0);
     }
 
+    .js .reveal-snap { opacity: 0; }
     .js .reveal-snap.is-revealed {
+      opacity: 1;
       animation: reveal-snap 520ms var(--ease-out-expo) calc(var(--i, 0) * 80ms) both;
     }
 
@@ -1085,6 +1090,11 @@
       document.querySelectorAll('.reveal, .reveal-snap').forEach(function(el) {
         io.observe(el);
       });
+      setTimeout(function() {
+        document.querySelectorAll('.reveal:not(.is-revealed), .reveal-snap:not(.is-revealed)').forEach(function(el) {
+          el.classList.add('is-revealed');
+        });
+      }, 2500);
     })();
   </script>
 
