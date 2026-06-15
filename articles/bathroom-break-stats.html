@@ -215,7 +215,7 @@
     if (navigator.webdriver || /HeadlessChrome|PhantomJS|Prerender/i.test(navigator.userAgent)) {
       revealAll();
     } else {
-      var fallback = setTimeout(revealAll, 1500);
+      var fallback = setTimeout(revealAll, 3000);
       function cancelFallback() { clearTimeout(fallback); }
       window.addEventListener('scroll',     cancelFallback, { once: true, passive: true });
       window.addEventListener('mousemove',  cancelFallback, { once: true, passive: true });
