@@ -250,11 +250,21 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal, .pullquote').forEach(function(el) { io.observe(el); });
-    setTimeout(function() {
+    function revealAll() {
       document.querySelectorAll('.reveal:not(.is-revealed), .pullquote:not(.is-revealed)').forEach(function(el) {
         el.classList.add('is-revealed');
       });
-    }, 2500);
+    }
+    if (navigator.webdriver || /HeadlessChrome|PhantomJS|Prerender/i.test(navigator.userAgent)) {
+      revealAll();
+    } else {
+      var fallback = setTimeout(revealAll, 1500);
+      function cancelFallback() { clearTimeout(fallback); }
+      window.addEventListener('scroll',     cancelFallback, { once: true, passive: true });
+      window.addEventListener('mousemove',  cancelFallback, { once: true, passive: true });
+      window.addEventListener('touchstart', cancelFallback, { once: true, passive: true });
+      window.addEventListener('pointerdown',cancelFallback, { once: true });
+    }
   })();
   </script>
 
